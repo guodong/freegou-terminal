@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui multimedia
+QT       += core gui multimedia webenginewidgets network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -32,3 +32,9 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui
+
+DISTFILES += \
+    main.qml
+
+RESOURCES += \
+    qml.qrc

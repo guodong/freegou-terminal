@@ -1,12 +1,17 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QFile>
+#include <QtWebEngineWidgets>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    QWebEngineView *view = new QWebEngineView(this);
+    QUrl url = QUrl("http://baidu.com");
+    view->load(url);
+    setCentralWidget(view);
 }
 
 MainWindow::~MainWindow()
