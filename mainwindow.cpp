@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     QWebEngineView *view = new QWebEngineView(this);
-    QUrl url = QUrl("http://baidu.com");
+    QUrl url = QUrl("http://jd.com");
     view->load(url);
     setCentralWidget(view);
 }
