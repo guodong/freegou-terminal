@@ -38,6 +38,7 @@ int main(int argc, char *argv[])
     channel.registerObject(QStringLiteral("bridge"), &bridge);
 
     MainWindow w;
+    client.setMainWindow(&w);
     w.showMaximized();
     //w.showFullScreen();
 

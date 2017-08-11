@@ -8,13 +8,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QWebEngineView *view = new QWebEngineView(this);
+    view = new QWebEngineView(this);
     QUrl url = QUrl("http://192.168.10.5:8080");
     view->load(url);
     setCentralWidget(view);
-    connect(view, &QWebEngineView::loadFinished, [=](int){
-        view->page()->runJavaScript("test()");
-    });
+//    connect(view, &QWebEngineView::loadFinished, [=](int){
+//        view->page()->runJavaScript("test()");
+//    });
 
     //wsserver wsServer = new wsserver();
 

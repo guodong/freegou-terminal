@@ -1,5 +1,6 @@
 #include "wsclient.h"
 #include <QtCore/QDebug>
+#include "mainwindow.h"
 
 QT_USE_NAMESPACE
 
@@ -11,6 +12,10 @@ wsclient::wsclient(const QUrl &url, bool debug, QObject *parent) :
     connect(&m_webSocket, &QWebSocket::connected, this, &wsclient::onConnected);
     connect(&m_webSocket, &QWebSocket::disconnected, this, &wsclient::closed);
     m_webSocket.open(QUrl(url));
+}
+
+void wsclient::setMainWindow(MainWindow *view) {
+    webview = view;
 }
 
 void wsclient::onConnected()
@@ -33,4 +38,5 @@ void wsclient::onTextMessageReceived(QString message)
     if (m_debug)
         qDebug() << "Message received:" << message;
     //m_webSocket.close();
+    webview->view->page()->runJavaScript("search(" + message + ")");
 }

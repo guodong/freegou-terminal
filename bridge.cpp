@@ -7,11 +7,15 @@
 Bridge::Bridge(wsclient *c, QObject *parent) : QObject(parent)
 {
     client = c;
-    buf.open(QIODevice::WriteOnly | QIODevice::Truncate);
 }
 
 void Bridge::startRecord()
 {
+    if (buf) {
+        free(buf);
+    }
+    buf = new QBuffer();
+    buf->open(QIODevice::WriteOnly | QIODevice::Truncate);
     QAudioFormat fmt;
     fmt.setSampleRate(16000);
     fmt.setChannelCount(1);
@@ -27,11 +31,13 @@ void Bridge::startRecord()
         qDebug( "Default format not supported, trying to use the nearest.");
     }
     input = new QAudioInput(fmt, this);
-    input->start(&buf);
+    input->start(buf);
 }
 
 void Bridge::stopRecord()
 {
     input->stop();
-    client->sendBinary(buf.data());
+    client->sendBinary(buf->data());
+    delete buf;
+    buf = nullptr;
 }

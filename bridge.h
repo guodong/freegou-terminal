@@ -26,7 +26,7 @@ public slots:
     void stopRecord();
 
 private:
-    QBuffer buf;
+    QBuffer *buf;
     QAudioInput *input;
     wsclient *client;
 };
