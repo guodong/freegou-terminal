@@ -12,7 +12,7 @@ Bridge::Bridge(wsclient *c, QObject *parent) : QObject(parent)
 void Bridge::startRecord()
 {
     if (buf) {
-        free(buf);
+        delete buf;
     }
     buf = new QBuffer();
     buf->open(QIODevice::WriteOnly | QIODevice::Truncate);
