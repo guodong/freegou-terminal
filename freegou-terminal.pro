@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui multimedia webenginewidgets network
+QT       += core gui multimedia webenginewidgets websockets webchannel widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -25,10 +25,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    wsclient.cpp \
+    websocketclientwrapper.cpp \
+    websockettransport.cpp \
+    bridge.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    wsclient.h \
+    websocketclientwrapper.h \
+    websockettransport.h \
+    bridge.h
 
 FORMS += \
         mainwindow.ui
